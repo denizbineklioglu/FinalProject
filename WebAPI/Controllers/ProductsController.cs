@@ -15,12 +15,18 @@ namespace WebAPI.Controllers
     [ApiController] //Attribute
     public class ProductsController : ControllerBase
     {
+
+        //IoC Container -- Inversion of Control
+        IProductService _productService;
+        public ProductsController(IProductService productService)
+        {
+            _productService = productService;
+        }
+
         [HttpGet]
         public List<Product> Get()
         {
-            //Dependency chain -- bağımlılık zinciri
-            IProductService productService = new ProductManager(new EfProductDal());
-            var result = productService.GetAll();
+            var result = _productService.GetAll();
             return result.Data;
         }
     }

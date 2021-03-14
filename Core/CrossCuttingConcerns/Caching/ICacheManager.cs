@@ -9,8 +9,8 @@ namespace Core.CrossCuttingConcerns.Caching
         T Get<T>(string key);
         object Get(string key);
         void Add(string key,object value,int duration);
-        bool IsAdd(string key);
-        void Remove(string key);
-        void RemoveByPattern(string pattern);
+        bool IsAdd(string key); //cache'de var mı?
+        void Remove(string key); //cache'den silmek
+        void RemoveByPattern(string pattern); 
     }
 }
